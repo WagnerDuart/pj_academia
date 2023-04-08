@@ -1,3 +1,5 @@
+
+import Patrick from "../assets/Patrick.png"
 export function Calculate () {
     return (
         // <!--==================== CALCULATE ====================-->
@@ -42,7 +44,7 @@ export function Calculate () {
             <p className="calculate__message" id="calculate-message"></p>
           </div>
           <img
-            src="/static/img/Patrick.png"
+            src={Patrick}
             alt="PATRICK image"
             className="calculate__img"
           />

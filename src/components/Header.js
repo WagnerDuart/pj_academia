@@ -1,9 +1,47 @@
+import logo_nav from "../assets/logo-nav.png"
 export function Header() {
+  const navMenu = document.getElementById("nav-menu"),
+    navToggle = document.getElementById("nav-toggle"),
+    navClose = document.getElementById("nav-close")
+
+    /*===== MENU SHOW =====*/
+    if (navToggle) {
+        navToggle.addEventListener("click", () => {
+            navMenu.classList.add("show-menu")
+        })
+    }
+
+    /*===== MENU HIDDEN =====*/
+    if (navClose) {
+        navClose.addEventListener("click", () => {
+            navMenu.classList.remove("show-menu")
+        })
+    }
+    const navLink = document.querySelectorAll(".nav__link")
+
+    const linkAction = () => {
+        const navMenu = document.getElementById("nav-menu")
+        navMenu.classList.remove("show-menu")
+    }
+
+    navLink.forEach(n => n.addEventListener("click", linkAction))
+
+    /*=============== CHANGE BACKGROUND HEADER ===============*/
+    const scrollHeader = () => {
+        const header = document.getElementById("header")
+        if (this.scrollY >= 50) {
+            header.classList.add('bg-header');
+        } else {
+            header.classList.remove('bg-header')
+        }
+    }
+    window.addEventListener("scroll", scrollHeader)
+
     return (
       <header className="header" id="header">
         <nav className="nav container">
           <a href="#" className="nav__logo">
-            <img src="/static/img/logo-nav.png" alt="logo" />
+            <img src={logo_nav} alt="logo" />
             PGS STUDIO
           </a>
           <div className="nav__menu" id="nav-menu">
@@ -44,7 +82,8 @@ export function Header() {
             <i className="ri-menu-line"></i>
           </div>
         </nav>
+       
       </header>
+      
     );
   }
-
