@@ -1,3 +1,5 @@
+import choose from "../assets/choose-img.png"
+
 export function Choose_us () {
     return(
         // <!--==================== CHOOSE US ====================-->
@@ -41,7 +43,7 @@ export function Choose_us () {
             </div>
             <div className="choose__images">
               <img
-                src="/static/img/choose-img.png"
+                src={choose}
                 alt="choose image"
                 className="choose__img"
               />

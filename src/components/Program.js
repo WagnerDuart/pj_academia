@@ -1,3 +1,8 @@
+import program1 from "../assets/program1.png"
+import program2 from "../assets/program2.png"
+import program3 from "../assets/program3.png"
+import program4 from "../assets/program4.png"
+
 export function Program () {
     return (
         // <!--==================== PROGRAM ====================-->
@@ -14,7 +19,7 @@ export function Program () {
             <article className="program__card">
               <div className="program__shape">
                 <img
-                  src="./static/img/program1.png"
+                  src={program1}
                   alt="program image"
                   className="program__img"
                 />
@@ -36,7 +41,7 @@ export function Program () {
             <article className="program__card">
               <div className="program__shape">
                 <img
-                  src="./static/img/program2.png"
+                  src={program2}
                   alt="program image"
                   className="program__img"
                 />
@@ -60,7 +65,7 @@ export function Program () {
             <article className="program__card">
               <div className="program__shape">
                 <img
-                  src="./static/img/program3.png"
+                  src={program3}
                   alt="program image"
                   className="program__img"
                 />
@@ -87,7 +92,7 @@ export function Program () {
             <article className="program__card">
               <div className="program__shape">
                 <img
-                  src="./static/img/program4.png"
+                  src={program4}
                   alt="program image"
                   className="program__img"
                 />

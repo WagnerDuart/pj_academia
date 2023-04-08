@@ -1,10 +1,12 @@
+import logo_nav from "../assets/logo-nav.png";
+
 export function Footer() {
     return(
         <footer className="footer section" id="footer">
         <div className="footer__container container grid">
             <div>
                 <a href="#" className="footer__logo">
-                <img src="/static/img/logo-nav.png" alt="footer logo"/> PGS STUDIO
+                <img src={logo_nav} alt="footer logo" /> PGS STUDIO
                 </a>
                 {/* <p className="footer__description">
                     Subscribe for company <br/> updates below.

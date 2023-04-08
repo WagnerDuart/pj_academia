@@ -1,3 +1,5 @@
+import home from "../assets/home-img.png"
+
 export function  Home () {
     return (
         
@@ -14,7 +16,7 @@ export function  Home () {
                     </a>
                 </div>
                 <div className="home__images">
-                    <img src="./static/img/home-img.png" alt="homeimage" className="home__img"/>
+                    <img src={home} alt="homeimage" className="home__img"/>
                     <div className="home__triangle home__triangle-3"></div>
                     <div className="home__triangle home__triangle-2"></div>
                     <div className="home__triangle home__triangle-1"></div>
