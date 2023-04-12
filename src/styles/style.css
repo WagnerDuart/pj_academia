@@ -409,6 +409,7 @@ img {
 
 .program__img {
   width: 38px;
+  border-radius: 50%;
 }
 
 .program__shape {
@@ -571,6 +572,7 @@ img {
 
 .Planos__img {
   width: 35px;
+  border-radius: 50%;
 }
 
 .Planos__shape {
@@ -639,7 +641,76 @@ img {
   color: var(--title-color-black);
 }
 
-/*2*/
+/*=============== Instrutores ===============*/
+.Instrutores__container {
+  grid-template-columns: 230px;
+  justify-content: center;
+  row-gap: 2rem;
+}
+
+.Instrutores__card {
+  display: grid;
+  background-color: hsla(79, 6%, 64%, .07);
+  padding: 1.5rem 2rem;
+  border: 2px solid transparent;
+  transition: background .5s, border .4s;
+  justify-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.Instrutores__img {
+  width: 96px;
+  border-radius: 50%;
+}
+
+.Instrutores__shape {
+  width: 100px;
+  height: 100px;
+  background-color: var(--first-color-gray);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin-bottom: 1rem;
+  transition: background .5s;
+}
+
+.Instrutores__title {
+  font-size: var(--h3-font-size);
+  margin-bottom: 1rem;
+}
+
+.Instrutores__description {
+  font-size: var(--small-font-size);
+  letter-spacing: .5px;
+  line-height: 150%;
+  justify-content: center;
+  line-break: auto;
+  /* word-break: break-all; */
+}
+
+.Instrutores__title,
+.Instrutores__description {
+  transition: color .5s;
+}
+
+.Instrutores__card:hover {
+  background-color: var(--first-color);
+  border: 2px solid var(--first-color-light);
+}
+
+.Instrutores__card:hover .Instrutores__shape {
+  background-color: var(--first-color-light);
+}
+
+.Instrutores__card:hover .Instrutores__title,
+.Instrutores__card:hover .Instrutores__description {
+  color: var(--title-color-black);
+}
+
+.Instrutores__card:hover {
+  opacity: 1;
+}
 
 /*=============== CALCULATE ===============*/
 
@@ -716,6 +787,25 @@ img {
 .footer__container {
   row-gap: 4rem;
   padding-top: 1rem;
+  padding-right: 5rem;
+  padding-left:5rem;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
+
+.footer__content {
+  grid-template-columns: repeat(auto-fit, max-content);
+  gap: 2.5rem 4rem;
+  flex-direction: row;
+}
+
+.footer__content,
+.footer__links,
+.footer__group {
+  display: grid;
+  align-items: center;
+  justify-items: center;
 }
 
 .footer__logo,
@@ -730,6 +820,7 @@ img {
 }
 
 .footer__logo {
+  justify-content: center;
   align-items: center;
   column-gap: .5rem;
   font-weight: var(--font-bold);
@@ -755,17 +846,6 @@ img {
   background: transparent;
   color: var(--text-color);
   outline: none;
-}
-
-.footer__content,
-.footer__links,
-.footer__group {
-  display: grid;
-}
-
-.footer__content {
-  grid-template-columns: repeat(2, max-content);
-  gap: 2.5rem 3.5rem;
 }
 
 .footer__title {
@@ -864,6 +944,7 @@ img {
 
 .show-scroll {
   bottom: 3rem;
+
 }
 
 
@@ -957,6 +1038,10 @@ img {
     gap: 2.5rem;
   }
 
+  .Instrutores__container {
+    grid-template-columns: repeat(2, 230px);
+    gap: 2.5em;
+  }
   .calculate__container {
     grid-template-columns: 1fr .8fr;
     align-items: center;
@@ -1150,6 +1235,19 @@ img {
   }
 
   .program__description {
+    font-size: var(--normal-font-size);
+  }
+  
+  .Instrutores__container {
+    grid-template-columns: repeat(3, 250px);
+    padding: 3rem 0;
+  }
+
+  .Instrutores__card {
+    padding: 2rem;
+  }
+
+  .Instrutores__description {
     font-size: var(--normal-font-size);
   }
 

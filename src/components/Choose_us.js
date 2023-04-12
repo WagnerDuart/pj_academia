@@ -1,9 +1,31 @@
+import React, { useState, useEffect, useRef, useContext } from "react";
+import { LinkContext } from "../context/linkContext";
 import choose from "../assets/choose-img.png"
 
 export function Choose_us () {
+  const [isVisible, setIsVisible] = useState(false);
+  const elementRefChoose_us = useRef(null);
+  const { changelinkactive } = useContext(LinkContext);
+  useEffect(() => {
+    const handleScroll = () => {
+      const element = elementRefChoose_us.current;
+      const { top, bottom } = element.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      if (top < windowHeight && bottom > 0) {
+        setIsVisible(true);
+        changelinkactive("Quem Somos");
+      } 
+      
+    };
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [elementRefChoose_us]);
     return(
         // <!--==================== CHOOSE US ====================-->
-      <section className="choose section" id="choose">
+      <section ref={elementRefChoose_us} className="choose section" id="choose">
         <div className="choose__overflow">
           <div className="choose__container container grid">
             <div className="choose__content">

@@ -1,12 +1,43 @@
+import { useContext, useEffect, useRef, useState } from "react";
 import program1 from "../assets/program1.png"
 import program2 from "../assets/program2.png"
 import program3 from "../assets/program3.png"
 import program4 from "../assets/program4.png"
+import { LinkContext } from "../context/linkContext";
+import axios from "axios";
+
 
 export function Program () {
+  const [programas, setprogramas] = useState([]);
+  async function fetchprograma() {
+    const response = await axios.get("http://127.0.0.1:8000/apis/programa/");
+    setprogramas(response.data);
+  }
+  useEffect(() => {
+    fetchprograma();
+  }, []);
+  const [isVisible, setIsVisible] = useState(false);
+  const elementRef = useRef(null);
+  const {changelinkactive,linkActive } = useContext(LinkContext);
+  useEffect(() => {
+    const handleScroll = () => {
+      const element = elementRef.current;
+      const { top, bottom } = element.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      if (top < windowHeight && bottom > 0) {
+        setIsVisible(true);
+        changelinkactive("Programa")
+      } 
+    };
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [elementRef]);
     return (
         // <!--==================== PROGRAM ====================-->
-      <section className="program section" id="program">
+      <section ref={elementRef} className="program section" id="program">
         <div className="container">
           <div className="section__data">
             <h2 className="section__subtitle"> Nosso Programa</h2>
@@ -16,26 +47,42 @@ export function Program () {
             </div>
           </div>
           <div className="program__container grid">
-            <article className="program__card">
-              <div className="program__shape">
-                <img
-                  src={program1}
-                  alt="program image"
-                  className="program__img"
-                />
-              </div>
-              <h3 className="program__title">Treino</h3>
-              <p className="program__description">
-                A musculação não só ajuda a construir músculos fortes, mas
-                também traz inúmeros benefícios para o corpo. Ela pode melhorar
-                a saúde cardiovascular, aumentar a densidade óssea e melhorar a
-                postura. Além disso, a musculação também pode ajudar a perder
-                peso e aprimorar a composição corporal. Junte-se a nós para
-                descobrir como a musculação pode transformar seu corpo.
-              </p>
-              <a href="#" className="program__button">
-                <i className="ri-arrow-right-line"></i>
-              </a>
+          {programas.map((programa, index) => (
+              <article className="program__card">
+                <div className="program__shape">
+                  <img
+                    src={programa.image_programa}
+                    alt="program image"
+                    className="program__img"
+                  />
+                </div>
+                <h3 className="program__title">{programa.nome_programa}</h3>
+                <p className="program__description">{programa.descricao}</p>
+                <a href="#" className="program__button">
+                  <i className="ri-arrow-right-line"></i>
+                </a>
+              </article>
+            ))}
+            {/* <article className="program__card">
+                <div className="program__shape">
+                  <img
+                    src={program1}
+                    alt="program image"
+                    className="program__img"
+                  />
+                </div>
+                <h3 className="program__title">Treino</h3>
+                <p className="program__description">
+                  A musculação não só ajuda a construir músculos fortes, mas
+                  também traz inúmeros benefícios para o corpo. Ela pode melhorar
+                  a saúde cardiovascular, aumentar a densidade óssea e melhorar a
+                  postura. Além disso, a musculação também pode ajudar a perder
+                  peso e aprimorar a composição corporal. Junte-se a nós para
+                  descobrir como a musculação pode transformar seu corpo.
+                </p>
+                <a href="#" className="program__button">
+                  <i className="ri-arrow-right-line"></i>
+                </a>
             </article>
 
             <article className="program__card">
@@ -112,7 +159,7 @@ export function Program () {
               <a href="#" className="program__button">
                 <i className="ri-arrow-right-line"></i>
               </a>
-            </article>
+            </article> */}
           </div>
         </div>
       </section>
